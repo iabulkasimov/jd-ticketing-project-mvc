@@ -24,6 +24,11 @@ public class RoleServiceImpl extends AbstractMapServices<RoleDTO,Long> implement
     }
 
     @Override
+    public void update(RoleDTO object) {
+        super.update(object.getId(),object);
+    }
+
+    @Override
     public void delete(RoleDTO object) {
         super.delete(object);
     }

@@ -1,23 +1,30 @@
 package com.cybertek.bootstrap;
 
+import com.cybertek.dto.ProjectDTO;
 import com.cybertek.dto.RoleDTO;
 import com.cybertek.dto.UserDTO;
 import com.cybertek.enums.Gender;
+import com.cybertek.enums.Status;
 import com.cybertek.implementation.RoleServiceImpl;
+import com.cybertek.service.ProjectService;
 import com.cybertek.service.RoleService;
 import com.cybertek.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataGenerator implements CommandLineRunner {
 
     RoleService roleService;
     UserService userService;
+    ProjectService projectService;
 
-    public DataGenerator(RoleService roleService, UserService userService) {
+    public DataGenerator(RoleService roleService, UserService userService, ProjectService projectService) {
         this.roleService = roleService;
         this.userService = userService;
+        this.projectService = projectService;
     }
 
     @Override
@@ -56,14 +63,14 @@ public class DataGenerator implements CommandLineRunner {
         userService.save(user7);
         userService.save(user8);
 
-//        ProjectDTO project1 = new ProjectDTO("Spring MVC","PR001",user1, LocalDate.now(),LocalDate.now().plusDays(25),"Creating Controllers", Status.OPEN);
-//        ProjectDTO project2 = new ProjectDTO("Spring ORM","PR002",user2, LocalDate.now(),LocalDate.now().plusDays(10),"Creating Database", Status.IN_PROGRESS);
-//        ProjectDTO project3 = new ProjectDTO("Spring Container","PR003",user1, LocalDate.now(),LocalDate.now().plusDays(32),"Creating Container", Status.UAT_TEST);
-//
-//        projectService.save(project1);
-//        projectService.save(project2);
-//        projectService.save(project3);
-//
+        ProjectDTO project1 = new ProjectDTO("Spring MVC","PR001",user1, LocalDate.now(),LocalDate.now().plusDays(25),"Creating Controllers", Status.OPEN);
+        ProjectDTO project2 = new ProjectDTO("Spring ORM","PR002",user2, LocalDate.now(),LocalDate.now().plusDays(10),"Creating Database", Status.IN_PROGRESS);
+        ProjectDTO project3 = new ProjectDTO("Spring Container","PR003",user1, LocalDate.now(),LocalDate.now().plusDays(32),"Creating Container", Status.UAT_TEST);
+
+        projectService.save(project1);
+        projectService.save(project2);
+        projectService.save(project3);
+
 //        TaskDTO task1 = new TaskDTO(project1,user8,"Controller","Request Mapping",Status.IN_PROGRESS,LocalDate.now().minusDays(4));
 //        TaskDTO task2 = new TaskDTO(project3,user3,"Configuration","Database Connnection",Status.COMPLETE,LocalDate.now().minusDays(12));
 //        TaskDTO task3 = new TaskDTO(project3,user6,"Mapping","One-To-Many",Status.IN_PROGRESS,LocalDate.now().minusDays(8));

@@ -32,7 +32,8 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form class="needs-validation" novalidate th:href="@{/user/update/{id}(id=${user.userName})}" method="post"
+                                    <form class="needs-validation" novalidate
+                                          th:href="@{/user/update/{id}(id=${user.userName})}" method="post"
                                           th:object="${user}">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
@@ -142,12 +143,12 @@
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label>Choose a Role</label>
-<!--                                                th:field won't work with th:selected and th:filed must be replace with id or role-->
-<!--                                                <select th:field="*{role}" class="custom-select" required="required">-->
-                                                    <select name="role" class="custom-select" required="required">
-                                                        <option th:value=" ''" th:text="Select"></option>
-                                                        <option th:each="role : ${roles}" th:value="${role.id}"
-                                                                th:text="${role.description}" th:selected="${role.id} == ${user.role.id}"></option>
+                                                    <!--                                                th:field won't work with th:selected and th:filed must be replace with id or role-->
+                                                    <!--                                                <select th:field="*{role}" class="custom-select" required="required">-->
+                                                    <select th:field="*{role}" name="role" class="custom-select"
+                                                            required="required">
+                                                        <!--                                                        <option th:value=" ''" th:text="Select"></option>-->
+                                                        <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.description}"></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -208,7 +209,8 @@
                                                         <button type="button" class="btn btn-warning btn-sm">Update
                                                         </button>
                                                     </a>
-                                                    <a th:href="@{/user/delete/{id}(id=${user.userName})}" class="delete-row">
+                                                    <a th:href="@{/user/delete/{id}(id=${user.userName})}"
+                                                       class="delete-row">
                                                         <button type="button" class="btn btn-secondary btn-sm">Delete
                                                         </button>
                                                     </a>
